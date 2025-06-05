@@ -15,14 +15,14 @@ const Hero = () => {
         <h1 className="font-poppins text-6xl md:text-8xl font-bold text-white mb-6 animate-fade-in drop-shadow-2xl">
           Discover
           <span className="block text-vcu-gold">
-            VCU Artists
+            Student Artists at VCU
           </span>
         </h1>
-        
+
         <p className="font-inter text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in drop-shadow-lg" style={{ animationDelay: '200ms' }}>
-          Explore the incredible creativity of Virginia Commonwealth University art students. 
-          From digital masterpieces to traditional paintings, discover emerging talent and 
-          connect directly with artists.
+          Explore the creativity of student artists from Virginia Commonwealth University.
+          From digital work to traditional mediums, this independent platform highlights 
+          emerging talent and provides a space to connect directly with creators.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in" style={{ animationDelay: '400ms' }}>

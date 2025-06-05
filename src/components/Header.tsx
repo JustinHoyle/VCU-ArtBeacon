@@ -14,7 +14,7 @@ const Header = () => {
             <div className="w-8 h-8 bg-vcu-gold rounded-md flex items-center justify-center">
               <span className="text-vcu-black font-bold text-sm">V</span>
             </div>
-            <span className="text-xl font-bold text-white">VCU ArtBeacon</span>
+            <span className="text-xl font-bold text-white">ArtBeacon</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -28,14 +28,6 @@ const Header = () => {
             <Link to="/about" className="text-white hover:text-vcu-gold transition-colors">
               About
             </Link>
-            <a 
-              href="https://ko-fi.com/vcuart" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-vcu-gold text-vcu-black px-4 py-2 rounded-md font-bold hover:brightness-90 transition-all duration-300 transform hover:scale-105"
-            >
-              Donate
-            </a>
           </nav>
 
           {/* Mobile Menu Button */}

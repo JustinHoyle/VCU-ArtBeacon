@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Header from '../components/Header';
 import ArtistCard from '../components/ArtistCard';
@@ -23,8 +22,9 @@ const Artists = () => {
         <div className="text-center mb-12">
           <h1 className="font-poppins text-4xl font-bold text-foreground mb-4">Featured Artists</h1>
           <p className="font-inter text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover the incredible talent of VCU art students. Each artist brings their unique 
-            perspective and style to create amazing works of art.
+            Discover creative work from student artists currently attending or affiliated with 
+            Virginia Commonwealth University. This platform highlights a variety of styles and 
+            perspectives from across the community.
           </p>
         </div>
 

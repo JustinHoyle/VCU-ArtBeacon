@@ -25,10 +25,8 @@ export const artists: Artist[] = [
     styles: ["Digital Art", "Character Design", "Anime"],
     bio: "Senior studying Digital Art with a passion for character design and storytelling. I love creating vibrant worlds and memorable characters that tell stories.",
     portfolio: [
-      "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=500",
-      "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=500",
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500",
-      "https://images.unsplash.com/photo-1568605114967-8130f3a36994"    ],
+      "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=500"
+    ],
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150",
     contacts: {
       instagram: "https://instagram.com/mayachen_art",
@@ -81,8 +79,7 @@ export const artists: Artist[] = [
     styles: ["Sculpture", "Installation", "Ceramics"],
     bio: "Senior sculptor working with sustainable materials to create thought-provoking installations about environmental consciousness.",
     portfolio: [
-      "https://images.unsplash.com/photo-1529335764857-3f1164d1cb24",
-      "https://images.unsplash.com/photo-1551782450-a2132b4ba21d"
+      "https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png"
     ],
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
     contacts: {
