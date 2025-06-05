@@ -22,9 +22,9 @@ const BackgroundGallery = () => {
         {duplicatedArtworks.map((artwork, index) => (
           <div
             key={`${artwork.id}-${index}`}
-            className="flex-shrink-0 mx-2"
+            className="flex-shrink-0 mx-3"
           >
-            <div className="w-48 h-36 rounded-lg overflow-hidden">
+            <div className="w-72 h-48 rounded-lg overflow-hidden">
               <img
                 src={artwork.image}
                 alt="Student artwork"
