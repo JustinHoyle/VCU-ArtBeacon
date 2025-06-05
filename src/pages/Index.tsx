@@ -1,4 +1,3 @@
-
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import ArtistCard from '../components/ArtistCard';
@@ -7,8 +6,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const Index = () => {
-  // Show featured artists (first 3)
-  const featuredArtists = artists.slice(0, 3);
+  // Show featured artists (randomized 3)
+  const featuredArtists = [...artists].sort(() => 0.5 - Math.random()).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-background">
@@ -61,7 +60,7 @@ const Index = () => {
                 Connect with potential clients and build your artistic reputation.
               </p>
               <a
-                href="https://forms.google.com/submit-portfolio"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd514TYOL_8SJTlZX2yp6_TrPvsnCRG_zRjvKPR39GkQk97JQ/viewform"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-vcu-gold text-vcu-black px-6 py-3 rounded font-bold transition-all duration-200 hover:brightness-90 hover:scale-105 inline-block shadow-sm"
@@ -140,7 +139,10 @@ const Index = () => {
           </div>
 
           <div className="mt-8 pt-8 border-t border-white/20 text-center text-white/80">
-            <p className="font-inter">&copy; 2024 VCU Student Art Showcase. Supporting student artists at Virginia Commonwealth University.</p>
+            <p className="font-inter">VCU ArtBeacon. Supporting student artists at Virginia Commonwealth University.</p>
+            <p className="font-inter text-xs text-white/60 mt-2">
+              This site is student-led and not officially affiliated with Virginia Commonwealth University.
+            </p>
           </div>
         </div>
       </footer>

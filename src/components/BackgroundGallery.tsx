@@ -1,67 +1,49 @@
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { artists } from '../data/artists';
 
 const BackgroundGallery = () => {
-  // Create a randomized array of all artworks
-  const allArtworks = artists.flatMap(artist => 
+  const allArtworks = useMemo(() => artists.flatMap(artist =>
     artist.portfolio.map(artwork => ({
       image: artwork,
       id: `${artist.id}-${artwork}`
     }))
-  );
+  ), []);
 
-  // Shuffle the artworks for random display
-  const shuffledArtworks = allArtworks.sort(() => Math.random() - 0.5);
-  
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [nextImageIndex, setNextImageIndex] = useState(1);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const shuffledArtworks = useMemo(() => {
+    const copy = [...allArtworks];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy.slice(0, 10); // limit to 10 images for performance
+  }, [allArtworks]);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsTransitioning(true);
-      
-      setTimeout(() => {
-        setCurrentImageIndex(nextImageIndex);
-        setNextImageIndex((prev) => (prev + 1) % shuffledArtworks.length);
-        setIsTransitioning(false);
-      }, 500); // Half of transition duration
-    }, 4000); // Change image every 4 seconds
+      setCurrentIndex(prev => (prev + 1) % shuffledArtworks.length);
+    }, 8000); // 3s display, 3s fade
 
     return () => clearInterval(interval);
-  }, [nextImageIndex, shuffledArtworks.length]);
+  }, [shuffledArtworks.length]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      {/* Current Image */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ${
-          isTransitioning ? 'opacity-0' : 'opacity-100'
-        }`}
-      >
+    <div className="absolute inset-0 overflow-hidden bg-black">
+      {shuffledArtworks.map((art, index) => (
         <img
-          src={shuffledArtworks[currentImageIndex]?.image}
-          alt="Student artwork background"
-          className="w-full h-full object-cover"
+          key={art.id}
+          src={art.image}
+          alt={`Artwork ${index}`}
+          loading={index === 0 ? 'eager' : 'lazy'}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-3000 ease-in-out will-change-opacity ${
+            index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+          }`}
         />
-      </div>
-      
-      {/* Next Image (for smooth transition) */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ${
-          isTransitioning ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <img
-          src={shuffledArtworks[nextImageIndex]?.image}
-          alt="Student artwork background"
-          className="w-full h-full object-cover"
-        />
-      </div>
-      
-      {/* Subtle blur overlay for better text readability */}
-      <div className="absolute inset-0 backdrop-blur-[1px]" />
+      ))}
+
+      {/* Optional blur for text readability */}
+
     </div>
   );
 };

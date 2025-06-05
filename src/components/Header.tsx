@@ -14,7 +14,7 @@ const Header = () => {
             <div className="w-8 h-8 bg-vcu-gold rounded-md flex items-center justify-center">
               <span className="text-vcu-black font-bold text-sm">V</span>
             </div>
-            <span className="text-xl font-bold text-white">VCU Student Art Showcase</span>
+            <span className="text-xl font-bold text-white">VCU ArtBeacon</span>
           </Link>
 
           {/* Desktop Navigation */}
