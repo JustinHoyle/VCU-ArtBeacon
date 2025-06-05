@@ -24,10 +24,10 @@ export default {
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: '#FAFAFA',
-				foreground: '#1E1E1E',
+				foreground: '#231F20',
 				primary: {
-					DEFAULT: '#6C63FF',
-					foreground: '#FFFFFF'
+					DEFAULT: '#FFB500',
+					foreground: '#231F20'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -51,7 +51,7 @@ export default {
 				},
 				card: {
 					DEFAULT: '#FFFFFF',
-					foreground: '#1E1E1E'
+					foreground: '#231F20'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -63,11 +63,16 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				'soft-indigo': '#6C63FF',
+				// VCU Brand Colors
+				'vcu-gold': '#FFB500',
+				'vcu-black': '#231F20',
+				'vcu-gray': '#A2AAAD',
+				// Legacy colors for backwards compatibility
+				'soft-indigo': '#FFB500',
 				'coral-red': '#FF6B6B',
 				'mint-green': '#3DDC97',
-				'golden-yellow': '#F6C90E',
-				'light-gray': '#E2E8F0'
+				'golden-yellow': '#FFB500',
+				'light-gray': '#A2AAAD'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
