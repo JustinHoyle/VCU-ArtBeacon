@@ -1,4 +1,5 @@
 
+import { useState, useEffect } from 'react';
 import { artists } from '../data/artists';
 
 const BackgroundGallery = () => {
@@ -13,31 +14,54 @@ const BackgroundGallery = () => {
   // Shuffle the artworks for random display
   const shuffledArtworks = allArtworks.sort(() => Math.random() - 0.5);
   
-  // Duplicate the array to create seamless infinite scroll
-  const duplicatedArtworks = [...shuffledArtworks, ...shuffledArtworks];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [nextImageIndex, setNextImageIndex] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      
+      setTimeout(() => {
+        setCurrentImageIndex(nextImageIndex);
+        setNextImageIndex((prev) => (prev + 1) % shuffledArtworks.length);
+        setIsTransitioning(false);
+      }, 500); // Half of transition duration
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [nextImageIndex, shuffledArtworks.length]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden opacity-30">
-      <div className="flex animate-scroll-left">
-        {duplicatedArtworks.map((artwork, index) => (
-          <div
-            key={`${artwork.id}-${index}`}
-            className="flex-shrink-0 mx-3"
-          >
-            <div className="w-72 h-48 rounded-lg overflow-hidden">
-              <img
-                src={artwork.image}
-                alt="Student artwork"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        ))}
+    <div className="absolute inset-0 overflow-hidden">
+      {/* Current Image */}
+      <div 
+        className={`absolute inset-0 transition-opacity duration-1000 ${
+          isTransitioning ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
+        <img
+          src={shuffledArtworks[currentImageIndex]?.image}
+          alt="Student artwork background"
+          className="w-full h-full object-cover"
+        />
       </div>
       
-      {/* Gradient overlays for smooth edges */}
-      <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent" />
-      <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent" />
+      {/* Next Image (for smooth transition) */}
+      <div 
+        className={`absolute inset-0 transition-opacity duration-1000 ${
+          isTransitioning ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <img
+          src={shuffledArtworks[nextImageIndex]?.image}
+          alt="Student artwork background"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
+      {/* Subtle blur overlay for better text readability */}
+      <div className="absolute inset-0 backdrop-blur-[1px]" />
     </div>
   );
 };
